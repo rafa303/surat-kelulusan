@@ -1,29 +1,38 @@
+/* ------------------ UMUM ------------------ */
 body {
   background-image: url('bg-desktop.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: #333;
+  color: white; /* ⬅️ ubah default warna jadi putih */
   text-align: center;
   padding: 40px;
   backdrop-filter: brightness(0.95);
 }
 
+/* Gunakan font Cinzel untuk heading */
 h1, h2, h3 {
   font-family: 'Cinzel', serif;
+  color: white; /* pastikan putih juga */
 }
 
+/* Gunakan Georgia untuk body, p, dll */
 body, p, button, input {
   font-family: 'Georgia', serif;
+  color: white;
 }
 
+/* Responsive: ganti background untuk HP */
 @media (max-width: 600px) {
   body {
     background-image: url('bg-mobile.png');
+    background-size: cover;
+    background-position: center;
   }
 }
 
+/* ------------------ FORM ------------------ */
 .container {
   max-width: 600px;
   margin: auto;
@@ -34,6 +43,11 @@ input {
   width: 80%;
   font-size: 16px;
   margin-bottom: 20px;
+  transition: box-shadow 0.3s;
+}
+
+input:focus {
+  box-shadow: 0 0 8px #d4a373;
 }
 
 button {
@@ -44,16 +58,19 @@ button {
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
   background-color: #a0744e;
+  transform: scale(1.05);
 }
 
+/* ------------------ SURAT ------------------ */
 .surat {
   background: rgba(255, 255, 255, 0.95);
   padding: 40px;
-  border: 12px solid #bfa76f; /* Border emas klasik */
+  border: 12px solid #bfa76f;
   border-radius: 20px;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
   max-width: 720px;
@@ -61,42 +78,47 @@ button:hover {
   position: relative;
   font-family: Georgia, serif;
   text-align: left;
+  color: #333; /* ⬅️ biarkan surat tetap warna gelap */
 }
 
+/* Judul Surat */
 .judul-surat {
   font-family: 'Cinzel', serif;
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
+  color: #333;
 }
 
+/* Isi Surat */
 .isi-surat {
   font-size: 18px;
   line-height: 1.8;
   text-align: justify;
+  color: #333;
 }
 
-/* Ornamen */
+/* ------------------ ORNAMEN ------------------ */
 .ornamen-atas {
-  width: 80px;
+  width: 120px; /* ⬅️ diperbesar dari 80px */
   position: absolute;
-  top: -40px;
+  top: -60px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .ornamen-bawah {
-  width: 60px;
+  width: 70px;
   display: block;
   margin: 30px auto 0 auto;
 }
 
+/* ------------------ ANIMASI & LAINNYA ------------------ */
 .hidden {
   display: none;
 }
 
-/* Animasi Fade In */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -104,22 +126,4 @@ button:hover {
 
 .fade-in {
   animation: fadeIn 0.8s ease-out;
-}
-
-/* Tombol Hover Effect */
-button {
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-button:hover {
-  transform: scale(1.05);
-}
-
-/* Transisi halus input */
-input {
-  transition: box-shadow 0.3s;
-}
-
-input:focus {
-  box-shadow: 0 0 8px #d4a373;
 }
