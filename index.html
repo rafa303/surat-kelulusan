@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surat Kelulusan</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>Surat Kelulusan</h1>
+    <p>Masukkan nama lengkapmu untuk membaca surat spesial:</p>
+    <input type="text" id="nameInput" placeholder="Contoh: Aisyah" />
+    <button onclick="lihatSurat()">Buka Surat</button>
+
+    <div id="suratContainer" class="surat hidden">
+      <h2>Untuk <span id="nama"></span>,</h2>
+      <p id="isiSurat"></p>
+      <button onclick="kembali()">Kembali</button>
+    </div>
+  </div>
+  <script src="surat.js"></script>
+</body>
+</html>
