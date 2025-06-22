@@ -1,4 +1,4 @@
-function lihatSurat() {
+function bukaSurat() {
   const input = document.getElementById("nameInput").value.trim().toLowerCase();
   fetch("data.json")
     .then(response => response.json())
