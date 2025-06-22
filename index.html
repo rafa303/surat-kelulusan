@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Surat Kelulusan</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
 </head>
 <body>
-  <audio id="musik" src="lulus.mp3" preload="auto" loop></audio>
-  <audio id="suaraConfetti" src="confetti.mp3" preload="auto"></audio>
-  <div class="container">
-   <h1 class="fade-in">Surat Kelulusan</h1>
-  <p class="fade-in">Masukkan nama lengkapmu untuk membaca surat spesial:</p>
-  <input type="text" id="nameInput" class="fade-in" placeholder="Masukkan Nama" />
-  <button onclick="lihatSurat()"> class="fade-in">Buka Surat</button>
+
+<div id="formContainer" class="container">
+  <h1>Surat Kelulusan</h1>
+  <input type="text" id="nameInput" placeholder="Masukkan Nama" />
+  <button onclick="lihatSurat()">Buka Surat</button>
+</div>
 
 <div id="suratContainer" class="surat hidden fade-in">
-  <img src="pita.png" alt="Pita Wisuda" class="ornamen-atas" />
+  <img src="pita.png" class="ornamen-atas" />
   <h2 class="judul-surat">Untuk <span id="nama"></span>,</h2>
   <p id="isiSurat" class="isi-surat"></p>
   <p id="penutupCustom" class="penutup"></p>
-  <img src="stempel.png" alt="Stempel Pondok" class="ornamen-bawah" />
+  <img src="stempel.png" class="ornamen-bawah" />
   <button onclick="kembali()">Kembali</button>
 </div>
+
 <audio id="musikLatar" src="lulus.mp3" preload="auto" loop></audio>
-  </audio>
-  </div>
-  <script src="surat.js"></script>
+<audio id="suaraConfetti" src="confetti.mp3" preload="auto"></audio>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script src="surat.js"></script>
+
 </body>
 </html>
