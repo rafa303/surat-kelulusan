@@ -1,9 +1,27 @@
 body {
-  font-family: 'Georgia', serif;
-  background-color: #f8f4ec;
+  background-image: url('bg-desktop.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: #333;
   text-align: center;
   padding: 40px;
+  backdrop-filter: brightness(0.95);
+}
+
+h1, h2, h3 {
+  font-family: 'Cinzel', serif;
+}
+
+body, p, button, input {
+  font-family: 'Georgia', serif;
+}
+
+@media (max-width: 600px) {
+  body {
+    background-image: url('bg-mobile.jpg');
+  }
 }
 
 .container {
@@ -33,7 +51,7 @@ button:hover {
 }
 
 .surat {
-  background: #fffef9;
+  background: rgba(255, 255, 255, 0.85);
   padding: 20px;
   margin-top: 30px;
   border: 2px solid #ccc;
