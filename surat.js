@@ -41,9 +41,16 @@ function lihatSurat() {
     });
 }
 
-
-
 function kembali() {
-  document.getElementById('suratContainer').classList.add('hidden');
+  // Sembunyikan surat dan tampilkan input
+  document.getElementById("suratContainer").classList.add("hidden");
+  document.getElementById("formContainer").classList.remove("hidden");
   document.getElementById('nameInput').value = '';
+
+  // Reset musik
+  const musik = document.getElementById("musikLatar");
+  musik.pause();
+  musik.currentTime = 0;
+  musik.play();
 }
+
