@@ -23,12 +23,17 @@ function lihatSurat() {
 
         // Tampilkan confetti
         setTimeout(() => {
+          // Mainkan efek suara confetti
+          const confettiSound = document.getElementById('suaraConfetti');
+          confettiSound.play().catch(e => console.log("Suara confetti gagal: ", e));
+        
           confetti({
             particleCount: 150,
             spread: 70,
             origin: { y: 0.6 }
           });
         }, 500);
+
 
       } else {
         alert("Nama tidak ditemukan. Pastikan kamu mengetik dengan benar.");
