@@ -51,11 +51,45 @@ button:hover {
 }
 
 .surat {
-  background: rgba(255, 255, 255, 0.85);
-  padding: 20px;
-  margin-top: 30px;
-  border: 2px solid #ccc;
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border: 12px solid #bfa76f; /* Border emas klasik */
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+  max-width: 720px;
+  margin: 40px auto;
+  position: relative;
+  font-family: Georgia, serif;
+  text-align: left;
+}
+
+.judul-surat {
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.isi-surat {
+  font-size: 18px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+/* Ornamen */
+.ornamen-atas {
+  width: 80px;
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ornamen-bawah {
+  width: 60px;
+  display: block;
+  margin: 30px auto 0 auto;
 }
 
 .hidden {
