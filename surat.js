@@ -3,34 +3,39 @@ const confettiScript = document.createElement('script');
 confettiScript.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js';
 document.head.appendChild(confettiScript);
 
-async function lihatSurat() {
+function lihatSurat() {
   const nama = document.getElementById('nameInput').value.trim();
-  const response = await fetch('data.json');
-  const data = await response.json();
+  fetch('data.json')
+    .then(res => res.json())
+    .then(data => {
+      const isiSurat = data[nama];
+      if (isiSurat) {
+        document.getElementById('nama').innerText = nama;
+        document.getElementById('isiSurat').innerText = isiSurat;
+        document.getElementById('suratContainer').classList.remove('hidden');
 
-  const isiSurat = data[nama];
-  if (isiSurat) {
-    document.getElementById('nama').innerText = nama;
-    document.getElementById('isiSurat').innerText = isiSurat;
-    document.getElementById('suratContainer').classList.remove('hidden');
+        // Mainkan musik hanya setelah klik (ini dianggap interaksi sah)
+        const musik = document.getElementById('musik');
+        musik.volume = 0.5; // setel volume
+        musik.play().catch(e => {
+          console.log("Autoplay diblokir, klik diperlukan: ", e);
+        });
 
-    // Mainkan musik
-    const musik = document.getElementById('musik');
-    musik.play();
+        // Tampilkan confetti
+        setTimeout(() => {
+          confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 }
+          });
+        }, 500);
 
-    // Tampilkan confetti
-    setTimeout(() => {
-      confetti({
-        particleCount: 150,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
-    }, 500);
-
-  } else {
-    alert("Nama tidak ditemukan. Pastikan kamu mengetik dengan benar.");
-  }
+      } else {
+        alert("Nama tidak ditemukan. Pastikan kamu mengetik dengan benar.");
+      }
+    });
 }
+
 
 
 function kembali() {
