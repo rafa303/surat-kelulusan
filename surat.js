@@ -1,4 +1,4 @@
-function bukaSurat() {
+function buka() {
   const input = document.getElementById("nameInput").value.trim().toLowerCase();
   fetch("data.json")
     .then(response => response.json())
