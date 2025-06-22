@@ -129,9 +129,11 @@ button:hover {
 
 .ornamen-bawah {
   width: 70px;
-  display: block;
-  margin: 30px auto 0 auto;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
 }
+
 
 /* ------------------ ANIMASI ------------------ */
 .hidden {
