@@ -1,35 +1,47 @@
-/* ------------------ UMUM ------------------ */
+/* ------------------ FONT ------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+
 body {
+  font-family: Georgia, serif;
   background-image: url('bg-desktop.png');
   background-size: cover;
-  background-position: center;
+  background-position: center top; /* Fokus di bagian atas */
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: white; /* ⬅️ ubah default warna jadi putih */
+  color: white;
   text-align: center;
   padding: 40px;
-  backdrop-filter: brightness(0.95);
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* Gunakan font Cinzel untuk heading */
-h1, h2, h3 {
-  font-family: 'Cinzel', serif;
-  color: white; /* pastikan putih juga */
+/* Blur Background via Overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  backdrop-filter: blur(8px); /* sekitar 20%-30% blur */
+  z-index: -1;
 }
 
-/* Gunakan Georgia untuk body, p, dll */
-body, p, button, input {
-  font-family: 'Georgia', serif;
-  color: white;
-}
-
-/* Responsive: ganti background untuk HP */
+/* Ganti background untuk HP */
 @media (max-width: 600px) {
   body {
     background-image: url('bg-mobile.png');
     background-size: cover;
     background-position: center;
   }
+}
+
+/* ------------------ TIPOGRAFI ------------------ */
+h1, h2, h3 {
+  font-family: 'Cinzel', serif;
+  color: white;
+}
+
+body, p, button, input {
+  font-family: 'Georgia', serif;
+  color: white;
 }
 
 /* ------------------ FORM ------------------ */
@@ -43,13 +55,22 @@ input {
   width: 80%;
   font-size: 16px;
   margin-bottom: 20px;
+  background-color: black;        /* Kolom input hitam */
+  color: white;
+  border: 2px solid #d4a373;
   transition: box-shadow 0.3s;
+}
+
+input::placeholder {
+  color: #ccc;
+  font-style: italic;
 }
 
 input:focus {
   box-shadow: 0 0 8px #d4a373;
 }
 
+/* ------------------ TOMBOL ------------------ */
 button {
   padding: 10px 20px;
   background-color: #805d3a;
@@ -78,10 +99,9 @@ button:hover {
   position: relative;
   font-family: Georgia, serif;
   text-align: left;
-  color: #333; /* ⬅️ biarkan surat tetap warna gelap */
+  color: #333;
 }
 
-/* Judul Surat */
 .judul-surat {
   font-family: 'Cinzel', serif;
   font-size: 28px;
@@ -91,7 +111,6 @@ button:hover {
   color: #333;
 }
 
-/* Isi Surat */
 .isi-surat {
   font-size: 18px;
   line-height: 1.8;
@@ -101,9 +120,9 @@ button:hover {
 
 /* ------------------ ORNAMEN ------------------ */
 .ornamen-atas {
-  width: 120px; /* ⬅️ diperbesar dari 80px */
+  width: 120px;
   position: absolute;
-  top: -60px;
+  top: -20px; /* ⬅️ diturunkan sedikit */
   left: 50%;
   transform: translateX(-50%);
 }
@@ -114,7 +133,7 @@ button:hover {
   margin: 30px auto 0 auto;
 }
 
-/* ------------------ ANIMASI & LAINNYA ------------------ */
+/* ------------------ ANIMASI ------------------ */
 .hidden {
   display: none;
 }
