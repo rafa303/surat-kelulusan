@@ -1,5 +1,12 @@
 {
-  "Aisyah": "Terima kasih atas bimbingan dan kasih sayangnya. Kami tidak akan lupa setiap nasihat Ustadzah.",
-  "Rafa": "Selamat wisuda! Terima kasih sudah jadi bagian dari keluarga ini. Perjalananmu baru saja dimulai.",
-  "Fulan": "Selamat atas kelulusanmu. Tetaplah rendah hati dan terus belajar menjadi insan terbaik."
-}
+  "Aisyah": {
+    "isi": "Selamat atas kelulusanmu, Aisyah. Perjalananmu baru dimulai.",
+    "penutup": "Semoga ilmu yang kau pelajari menjadi cahaya bagi dunia."
+  },
+  "Ustadzah Salma": {
+    "isi": "Terima kasih atas bimbingan dan doa-doamu selama ini.",
+    "penutup": "Semoga Allah membalas segala kebaikanmu dengan limpahan pahala."
+  },
+  "Rafa": {
+    "isi": "Selamat, Rafa! Kamu telah melewati masa-masa penuh perjuangan.",
+    "penutup": "Teruslah melangkah dengan rendah hati
