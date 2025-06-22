@@ -26,10 +26,12 @@ function lihatSurat() {
         musik.volume = 0.5;
         musik.play().catch(() => {});
 
-        // Confetti + Sound
+        // Tampilkan confettiMore actions
         setTimeout(() => {
-          const confettiSound = document.getElementById('suaraConfetti');
-          confettiSound.play().catch(() => {});
+          // Mainkan efek suara confetti
+          const confettiSound = document.getElementById('suaraConfetti');More actions
+          confettiSound.play().catch(e => console.log("Suara confetti gagal: ", e));
+
           confetti({
             particleCount: 150,
             spread: 70,
