@@ -6,14 +6,33 @@ document.head.appendChild(confettiScript);
 function lihatSurat() {
   const nama = document.getElementById('nameInput').value.trim();
   fetch('data.json')
+  .then(response => response.json())
+  .then(data => {
+    const inputNama = document.getElementById('nameInput').value.trim();
+    const nama = Object.keys(data).find(n => n.toLowerCase() === inputNama.toLowerCase());
+
+    if (nama) {
+      const surat = data[nama];
+      tampilkanSurat(nama, surat.isi, surat.penutup);
+    } else {
+      alert("Nama tidak ditemukan. Pastikan penulisan sudah benar.");
+    }
+  });
+
+  fetch('data.json')
     .then(res => res.json())
     .then(data => {
       const isiSurat = data[nama];
       if (isiSurat) {
-        document.getElementById('nama').innerText = nama;
-        document.getElementById('isiSurat').innerText = isiSurat;
-        document.getElementById('suratContainer').classList.remove('hidden');
-
+        const inputNama = document.getElementById('nameInput').value.trim();
+        const nama = Object.keys(data).find(n => n.toLowerCase() === inputNama.toLowerCase());
+        if (nama) {
+        const surat = data[nama];
+        tampilkanSurat(nama, surat.isi, surat.penutup);
+      } else {
+        alert("Nama tidak ditemukan. Pastikan penulisan sudah benar.");
+      }
+        
         // Mainkan musik hanya setelah klik (ini dianggap interaksi sah)
         const musik = document.getElementById('musik');
         musik.volume = 0.5; // setel volume
@@ -34,12 +53,10 @@ function lihatSurat() {
           });
         }, 500);
 
-
-      } else {
-        alert("Nama tidak ditemukan. Pastikan kamu mengetik dengan benar.");
-      }
     });
 }
+
+
 
 function kembali() {
   // Sembunyikan surat dan tampilkan input
