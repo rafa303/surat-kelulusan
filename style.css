@@ -1,5 +1,5 @@
 body {
-  background-image: url('bg-desktop.jpg');
+  background-image: url('bg-desktop.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -20,7 +20,7 @@ body, p, button, input {
 
 @media (max-width: 600px) {
   body {
-    background-image: url('bg-mobile.jpg');
+    background-image: url('bg-mobile.png');
   }
 }
 
