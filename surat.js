@@ -4,48 +4,32 @@ confettiScript.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/co
 document.head.appendChild(confettiScript);
 
 function lihatSurat() {
-  const nama = document.getElementById('nameInput').value.trim();
-  fetch('data.json')
-  .then(response => response.json())
-  .then(data => {
-    const inputNama = document.getElementById('nameInput').value.trim();
-    const nama = Object.keys(data).find(n => n.toLowerCase() === inputNama.toLowerCase());
-
-    if (nama) {
-      const surat = data[nama];
-      tampilkanSurat(nama, surat.isi, surat.penutup);
-    } else {
-      alert("Nama tidak ditemukan. Pastikan penulisan sudah benar.");
-    }
-  });
-
+  const namaInput = document.getElementById('nameInput').value.trim();
   fetch('data.json')
     .then(res => res.json())
     .then(data => {
-      const isiSurat = data[nama];
-      if (isiSurat) {
-        const inputNama = document.getElementById('nameInput').value.trim();
-        const nama = Object.keys(data).find(n => n.toLowerCase() === inputNama.toLowerCase());
-        if (nama) {
-        const surat = data[nama];
-        tampilkanSurat(nama, surat.isi, surat.penutup);
-      } else {
-        alert("Nama tidak ditemukan. Pastikan penulisan sudah benar.");
-      }
-        
-        // Mainkan musik hanya setelah klik (ini dianggap interaksi sah)
-        const musik = document.getElementById('musik');
-        musik.volume = 0.5; // setel volume
-        musik.play().catch(e => {
-          console.log("Autoplay diblokir, klik diperlukan: ", e);
-        });
+      // Pencocokan nama tanpa case sensitive
+      const nama = Object.keys(data).find(n => n.toLowerCase() === namaInput.toLowerCase());
+      if (nama && data[nama].isi) {
+        const isiSurat = data[nama].isi;
+        const penutup = data[nama].penutup || "";
 
-        // Tampilkan confetti
+        document.getElementById('nama').innerText = nama;
+        document.getElementById('isiSurat').innerText = isiSurat;
+        document.getElementById('penutupCustom').innerText = penutup;
+
+        document.getElementById('suratContainer').classList.remove('hidden');
+        document.getElementById('formContainer').classList.add('hidden');
+
+        // Musik
+        const musik = document.getElementById('musik');
+        musik.volume = 0.5;
+        musik.play().catch(() => {});
+
+        // Confetti + Sound
         setTimeout(() => {
-          // Mainkan efek suara confetti
           const confettiSound = document.getElementById('suaraConfetti');
-          confettiSound.play().catch(e => console.log("Suara confetti gagal: ", e));
-        
+          confettiSound.play().catch(() => {});
           confetti({
             particleCount: 150,
             spread: 70,
@@ -53,8 +37,12 @@ function lihatSurat() {
           });
         }, 500);
 
+      } else {
+        alert("Nama tidak ditemukan. Pastikan kamu mengetik dengan benar.");
+      }
     });
 }
+
 
 
 
