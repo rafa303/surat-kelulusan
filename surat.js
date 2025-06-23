@@ -78,25 +78,30 @@ function cetakSebagaiGambar() {
     color: surat.style.color
   };
 
-  // Buat solid agar html2canvas tangkap jelas
-  surat.style.background = "#fff";
-  surat.style.color = "#000";
+  // Buat solid agar html2canvas bisa tangkap jelas
+  surat.style.background = "#ffffff";
+  surat.style.color = "#000000";
 
-  // Tambahkan background white & teks hitam untuk semua anak
+  // Sembunyikan gambar konten
+  const gambarSementara = document.querySelectorAll('.gambar-konten');
+  gambarSementara.forEach(el => el.style.display = "none");
+
+  // Paksa semua teks jadi hitam agar terlihat
   surat.querySelectorAll("*").forEach(el => {
     el.style.color = "#000";
     el.style.background = "transparent";
   });
 
-  html2canvas(surat).then(canvas => {
+  html2canvas(surat, { scale: 2 }).then(canvas => {
     const link = document.createElement('a');
     link.download = 'surat-kelulusan.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
 
-    // Kembalikan style semula
+    // Kembalikan semua style
     surat.style.background = originalStyle.background;
     surat.style.color = originalStyle.color;
+    gambarSementara.forEach(el => el.style.display = "");
     surat.querySelectorAll("*").forEach(el => {
       el.style.color = "";
       el.style.background = "";
