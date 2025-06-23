@@ -40,23 +40,41 @@ function buka() {
 
       // Cek dan tampilkan gambar sesuai isi surat
       const dimunculkan = new Set();
-      Object.keys(triggerKata).forEach(kunci => {
-        if (isi.includes(kunci) && !dimunculkan.has(kunci)) {
-          const img = document.createElement("img");
-          img.src = triggerKata[kunci];
-          img.classList.add("gambar-konten");
-
-          const posisi = ["left", "right", "top-left", "bottom-right"];
-          const posisiTerpilih = posisi[Math.floor(Math.random() * posisi.length)];
-          img.classList.add(`pos-${posisiTerpilih}`);
-
-          const derajat = Math.floor(Math.random() * 31) - 15;
-          img.style.transform = `rotate(${derajat}deg)`;
-
-          document.querySelector(".surat").appendChild(img);
-          dimunculkan.add(kunci);
+      let gambarIndex = 0;
+const posisiTerpakai = [];
+    Object.keys(triggerKata).forEach(kunci => {
+      if (isi.includes(kunci) && !dimunculkan.has(kunci)) {
+        const img = document.createElement("img");
+        img.src = triggerKata[kunci];
+        img.classList.add("gambar-konten");
+    
+        const surat = document.querySelector('.surat');
+    
+        // Posisi acak: kiri atau kanan
+        const arah = Math.random() > 0.5 ? "left" : "right";
+        const jarakPinggir = -80;
+        const topPos = 100 + gambarIndex * 120; // Jarak antar gambar
+    
+        if (arah === "left") {
+          img.style.left = `${jarakPinggir}px`;
+        } else {
+          img.style.right = `${jarakPinggir}px`;
         }
-      });
+        img.style.top = `${topPos}px`;
+    
+        // Rotasi acak
+        const derajat = Math.floor(Math.random() * 31) - 15;
+        img.style.transform = `rotate(${derajat}deg)`;
+    
+        // Zoom saat diklik
+        img.onclick = () => {
+          img.classList.toggle("zoomed");
+        };
+    
+        surat.appendChild(img);
+        dimunculkan.add(kunci);
+        gambarIndex++;
+      }
     });
 }
 
