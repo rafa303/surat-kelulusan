@@ -1,7 +1,6 @@
 // Daftar kata/frasa yang akan memicu gambar
 const triggerKata = {
-  "IPSA": "ipsa.png",
-  "Bu Rofiqoh": "rofiqoh.png",
+  "IPSA": "ipsa.jpg",
 };
 
 function buka() {
