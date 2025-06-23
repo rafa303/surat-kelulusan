@@ -51,14 +51,21 @@ function kembali() {
   musik.pause();
   musik.currentTime = 0;
 }
-
 function cetakSebagaiGambar() {
   const surat = document.querySelector('.surat');
+
+  // Sementara buat background solid
+  const originalBackground = surat.style.background;
+  surat.style.background = "#fff";
+
   html2canvas(surat).then(canvas => {
     const link = document.createElement('a');
     link.download = 'surat-kelulusan.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
+
+    // Kembalikan background semula
+    surat.style.background = originalBackground;
   });
 }
 
