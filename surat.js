@@ -72,8 +72,21 @@ function kembali() {
 function cetakSebagaiGambar() {
   const surat = document.querySelector('.surat');
 
-  const originalBackground = surat.style.background;
+  // Simpan style asli
+  const originalStyle = {
+    background: surat.style.background,
+    color: surat.style.color
+  };
+
+  // Buat solid agar html2canvas tangkap jelas
   surat.style.background = "#fff";
+  surat.style.color = "#000";
+
+  // Tambahkan background white & teks hitam untuk semua anak
+  surat.querySelectorAll("*").forEach(el => {
+    el.style.color = "#000";
+    el.style.background = "transparent";
+  });
 
   html2canvas(surat).then(canvas => {
     const link = document.createElement('a');
@@ -81,7 +94,13 @@ function cetakSebagaiGambar() {
     link.href = canvas.toDataURL('image/png');
     link.click();
 
-    surat.style.background = originalBackground;
+    // Kembalikan style semula
+    surat.style.background = originalStyle.background;
+    surat.style.color = originalStyle.color;
+    surat.querySelectorAll("*").forEach(el => {
+      el.style.color = "";
+      el.style.background = "";
+    });
   });
 }
 
