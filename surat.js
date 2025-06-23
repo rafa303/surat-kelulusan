@@ -23,7 +23,7 @@ function buka() {
 
       document.getElementById("formContainer").classList.add("hidden");
       document.getElementById("suratContainer").classList.remove("hidden");
-      document.getElementById("peringatanBawang").classList.remove("hidden");
+      alert("⚠️ Bahaya! Mengandung Bawang!");
 
       const musik = document.getElementById("musikLatar");
       musik.currentTime = 0;
