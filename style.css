@@ -156,26 +156,51 @@ button:hover {
   border-radius: 10px;
   background-color: #fdfdfd;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  z-index: 5;
-  opacity: 0.85;
-  transition: all 0.3s ease;
-  cursor: pointer;
+  z-index: 10;
+  opacity: 0.9;
+  transition: all 0.4s ease;
+  cursor: zoom-in;
   object-fit: cover;
 }
 
-.pos-left { left: -70px; top: 25%; }
-.pos-right { right: -70px; top: 35%; }
-.pos-top-left { top: -25px; left: -25px; }
-.pos-bottom-right { bottom: -25px; right: -25px; }
-
+/* Zoom ketika diklik */
 .gambar-konten.zoomed {
-  transform: scale(2) rotate(0deg);
-  z-index: 999;
+  transform: scale(3) rotate(0deg);
+  z-index: 9999;
+  cursor: zoom-out;
 }
 
+/* Efek glow saat hover */
 .gambar-konten:hover {
   box-shadow: 0 0 10px 4px rgba(255, 215, 0, 0.6);
 }
+
+/* Posisi default, ditimpa oleh JS */
+.pos-left {
+  left: -70px;
+}
+
+.pos-right {
+  right: -70px;
+}
+
+.pos-top-left {
+  top: -25px;
+  left: -25px;
+}
+
+.pos-bottom-right {
+  bottom: -25px;
+  right: -25px;
+}
+
+/* Responsif: Sembunyikan di HP kecil */
+@media (max-width: 600px) {
+  .gambar-konten {
+    display: none;
+  }
+}
+
 
 /* ------------------ ORNAMEN ------------------ */
 .ornamen-atas {
