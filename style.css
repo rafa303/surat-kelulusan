@@ -61,15 +61,6 @@ input {
   transition: box-shadow 0.3s;
 }
 
-.peringatan-bawang {
-  text-align: center;
-  color: #c0392b;
-  font-weight: bold;
-  font-size: 18px;
-  margin-top: 15px;
-}
-
-
 input::placeholder {
   color: #ccc;
   font-style: italic;
