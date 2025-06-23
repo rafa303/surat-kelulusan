@@ -1,3 +1,4 @@
+
 /* ------------------ FONT ------------------ */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 
@@ -5,7 +6,7 @@ body {
   font-family: Georgia, serif;
   background-image: url('bg-desktop.png');
   background-size: cover;
-  background-position: center top; /* Fokus di bagian atas */
+  background-position: center top;
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: white;
@@ -20,11 +21,10 @@ body::before {
   content: '';
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  backdrop-filter: blur(3px); /* sekitar 20%-30% blur */
+  backdrop-filter: blur(3px);
   z-index: -1;
 }
 
-/* Ganti background untuk HP */
 @media (max-width: 600px) {
   body {
     background-image: url('bg-mobile.png');
@@ -39,7 +39,7 @@ h1, h2, h3 {
   color: white;
 }
 
-body, p, button, input {
+body, button, input {
   font-family: 'Georgia', serif;
   color: white;
 }
@@ -55,7 +55,7 @@ input {
   width: 80%;
   font-size: 16px;
   margin-bottom: 20px;
-  background-color: black;        /* Kolom input hitam */
+  background-color: black;
   color: white;
   border: 2px solid #d4a373;
   transition: box-shadow 0.3s;
@@ -110,6 +110,8 @@ button:hover {
   text-align: center;
   color: #333;
 }
+
+/* ------------------ GAMBAR KONTEN ------------------ */
 .gambar-konten {
   position: absolute;
   width: 90px;
@@ -130,24 +132,17 @@ button:hover {
   z-index: 999;
 }
 
-/* Letakkan di luar area surat */
-.pos-left {
-  left: -110px;
-  top: 30%;
-}
-.pos-right {
-  right: -110px;
-  top: 40%;
-}
-.pos-top-left {
-  top: -40px;
-  left: -40px;
-}
-.pos-bottom-right {
-  bottom: -40px;
-  right: -40px;
+.gambar-konten:hover {
+  box-shadow: 0 0 10px 4px rgba(255, 215, 0, 0.6);
 }
 
+/* Posisi gambar lebih dekat */
+.pos-left { left: -70px; top: 30%; }
+.pos-right { right: -70px; top: 40%; }
+.pos-top-left { top: -20px; left: -20px; }
+.pos-bottom-right { bottom: -20px; right: -20px; }
+
+/* ------------------ PENUTUP ------------------ */
 .penutup {
   font-style: italic;
   text-align: center;
@@ -156,12 +151,11 @@ button:hover {
   font-size: 16px;
 }
 
-
 /* ------------------ ORNAMEN ------------------ */
 .ornamen-atas {
   width: 120px;
   position: absolute;
-  top: -20px; /* ⬅️ diturunkan sedikit */
+  top: -20px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -172,7 +166,6 @@ button:hover {
   bottom: 30px;
   right: 30px;
 }
-
 
 /* ------------------ ANIMASI ------------------ */
 .hidden {
@@ -192,4 +185,3 @@ button:hover {
   0% { box-shadow: 0 0 0 rgba(0,0,0,0); }
   100% { box-shadow: 0 0 25px rgba(0,0,0,0.15); }
 }
-
