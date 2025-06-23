@@ -110,7 +110,25 @@ button:hover {
   text-align: center;
   color: #333;
 }
+.gambar-konten {
+  position: absolute;
+  width: 100px;
+  z-index: 10;
+  opacity: 0.85;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
 
+.gambar-konten.zoomed {
+  transform: scale(2) rotate(0deg);
+  z-index: 1000;
+}
+
+/* Posisi acak */
+.pos-left { left: -100px; top: 30%; }
+.pos-right { right: -100px; top: 40%; }
+.pos-top-left { top: 0; left: 0; }
+.pos-bottom-right { bottom: 0; right: 0; }
 .isi-surat {
   font-size: 18px;
   line-height: 1.8;
