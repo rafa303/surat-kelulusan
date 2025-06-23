@@ -1,7 +1,11 @@
-// Kata/frasa yang memicu gambar (bisa kamu tambah sendiri)
 const triggerKata = {
-  "IPSA": "ipsa.jpg",
-  "Bu Rofiqoh": "rofiqoh.jpg"
+  "IPSA": "ipsa.png",
+  "Bu Rofiqoh": "rofiqoh.png",
+  "kelas 9": "kelas9.png",
+  "hafalan": "alquran.png",
+  "doa": "doa.png",
+  "ustadz": "ustadz.png",
+  "bismillah": "bismillah.png"
 };
 
 function buka() {
@@ -14,17 +18,7 @@ function buka() {
 
       const { isi, penutup } = data[namaDitemukan];
       document.getElementById("nama").innerText = namaDitemukan;
-
-      // Sisipkan gambar dalam isi surat
-      let isiDiubah = isi;
-      Object.keys(triggerKata).forEach(kunci => {
-        const rotasi = Math.floor(Math.random() * 31) - 15;
-        const gambar = `<img src="${triggerKata[kunci]}" class="inline-img" style="transform: rotate(${rotasi}deg)">`;
-        const regex = new RegExp(`(${kunci})`, 'gi');
-        isiDiubah = isiDiubah.replace(regex, `$1 ${gambar}`);
-      });
-      document.getElementById("isiSurat").innerHTML = isiDiubah;
-
+      document.getElementById("isiSurat").innerText = isi;
       document.getElementById("penutupCustom").innerText = penutup;
 
       document.getElementById("formContainer").classList.add("hidden");
@@ -39,6 +33,29 @@ function buka() {
         sfx.play().catch(() => {});
         jalankanConfetti();
       }, 500);
+
+      // Hapus gambar sebelumnya
+      document.querySelectorAll('.gambar-konten').forEach(el => el.remove());
+
+      // Cek dan tampilkan gambar sesuai isi surat
+      const dimunculkan = new Set();
+      Object.keys(triggerKata).forEach(kunci => {
+        if (isi.includes(kunci) && !dimunculkan.has(kunci)) {
+          const img = document.createElement("img");
+          img.src = triggerKata[kunci];
+          img.classList.add("gambar-konten");
+
+          const posisi = ["left", "right", "top-left", "bottom-right"];
+          const posisiTerpilih = posisi[Math.floor(Math.random() * posisi.length)];
+          img.classList.add(`pos-${posisiTerpilih}`);
+
+          const derajat = Math.floor(Math.random() * 31) - 15;
+          img.style.transform = `rotate(${derajat}deg)`;
+
+          document.querySelector(".surat").appendChild(img);
+          dimunculkan.add(kunci);
+        }
+      });
     });
 }
 
@@ -51,10 +68,10 @@ function kembali() {
   musik.pause();
   musik.currentTime = 0;
 }
+
 function cetakSebagaiGambar() {
   const surat = document.querySelector('.surat');
 
-  // Sementara buat background solid
   const originalBackground = surat.style.background;
   surat.style.background = "#fff";
 
@@ -64,7 +81,6 @@ function cetakSebagaiGambar() {
     link.href = canvas.toDataURL('image/png');
     link.click();
 
-    // Kembalikan background semula
     surat.style.background = originalBackground;
   });
 }
