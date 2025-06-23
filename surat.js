@@ -1,11 +1,5 @@
 const triggerKata = {
-  "IPSA": "ipsa.jpg",
-  "Bu Rofiqoh": "rofiqoh.jpg",
-  "kelas 9": "kelas9.png",
-  "hafalan": "alquran.png",
-  "doa": "doa.png",
-  "ustadz": "ustadz.png",
-  "bismillah": "bismillah.png"
+  
 };
 
 function buka() {
