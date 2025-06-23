@@ -112,28 +112,40 @@ button:hover {
 }
 .gambar-konten {
   position: absolute;
-  width: 100px;
-  z-index: 10;
+  width: 90px;
+  height: 90px;
+  border: 4px solid #fff;
+  border-radius: 12px;
+  background-color: #fdfdfd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 5;
   opacity: 0.85;
   transition: all 0.3s ease;
   cursor: pointer;
+  object-fit: cover;
 }
 
 .gambar-konten.zoomed {
   transform: scale(2) rotate(0deg);
-  z-index: 1000;
+  z-index: 999;
 }
 
-/* Posisi acak */
-.pos-left { left: -100px; top: 30%; }
-.pos-right { right: -100px; top: 40%; }
-.pos-top-left { top: 0; left: 0; }
-.pos-bottom-right { bottom: 0; right: 0; }
-.isi-surat {
-  font-size: 18px;
-  line-height: 1.8;
-  text-align: justify;
-  color: #333;
+/* Letakkan di luar area surat */
+.pos-left {
+  left: -110px;
+  top: 30%;
+}
+.pos-right {
+  right: -110px;
+  top: 40%;
+}
+.pos-top-left {
+  top: -40px;
+  left: -40px;
+}
+.pos-bottom-right {
+  bottom: -40px;
+  right: -40px;
 }
 
 .penutup {
