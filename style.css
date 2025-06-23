@@ -111,6 +111,16 @@ button:hover {
   color: #333;
 }
 
+.inline-img {
+  width: 40px;
+  height: 40px;
+  margin-left: 6px;
+  vertical-align: middle;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
 .isi-surat {
   font-size: 18px;
   line-height: 1.8;
