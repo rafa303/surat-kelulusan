@@ -23,6 +23,7 @@ function buka() {
 
       document.getElementById("formContainer").classList.add("hidden");
       document.getElementById("suratContainer").classList.remove("hidden");
+      document.getElementById("peringatanBawang").classList.remove("hidden");
 
       const musik = document.getElementById("musikLatar");
       musik.currentTime = 0;
