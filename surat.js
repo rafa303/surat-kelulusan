@@ -71,6 +71,9 @@ function kembali() {
 
 function cetakSebagaiGambar() {
   const surat = document.querySelector('.surat');
+  // Sembunyikan tombol saat render
+  const tombolSementara = document.querySelectorAll('.non-printable');
+  tombolSementara.forEach(el => el.style.display = "none");
 
   // Simpan style asli surat
   const originalStyles = {
@@ -108,6 +111,7 @@ function cetakSebagaiGambar() {
     // Kembalikan semua style
     surat.style.background = originalStyles.background;
     surat.style.color = originalStyles.color;
+    tombolSementara.forEach(el => el.style.display = "");
 
     allChildren.forEach((el, i) => {
       el.style.color = originalTextColors[i];
