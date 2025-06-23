@@ -135,8 +135,10 @@ button:hover {
 .isi-surat {
   font-size: 18px;
   line-height: 1.8;
-  text-align: center;
+  text-align: justify;
+  text-indent: 25px;
 }
+
 
 .penutup {
   font-style: italic;
