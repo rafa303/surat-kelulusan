@@ -33,47 +33,6 @@ body::before {
   }
 }
 
-@media print {
-  body {
-    background: none !important;
-    color: #000 !important;
-    font-family: 'Georgia', serif;
-  }
-
-  .surat {
-    border: none;
-    box-shadow: none;
-    background: none;
-    color: #000;
-    padding: 20px;
-  }
-
-  .container,
-  .gambar-konten,
-  .ornamen-atas,
-  .ornamen-bawah,
-  button,
-  audio {
-    display: none !important;
-  }
-
-  #suratContainer {
-    display: block !important;
-  }
-
-  .judul-surat {
-    text-align: center;
-    font-size: 24px;
-  }
-
-  .isi-surat,
-  .penutup {
-    text-align: center;
-    font-size: 16px;
-    line-height: 1.6;
-  }
-}
-
 /* ------------------ TIPOGRAFI ------------------ */
 h1, h2, h3 {
   font-family: 'Cinzel', serif;
