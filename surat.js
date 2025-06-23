@@ -1,3 +1,9 @@
+// Daftar kata/frasa yang akan memicu gambar
+const triggerKata = {
+  "IPSA": "ipsa.png",
+  "Bu Rofiqoh": "rofiqoh.png",
+};
+
 function buka() {
   const input = document.getElementById("nameInput").value.trim().toLowerCase();
   fetch("data.json")
@@ -23,6 +29,42 @@ function buka() {
         sfx.play().catch(() => {});
         jalankanConfetti();
       }, 500);
+
+      // 🔄 Hapus semua gambar yang pernah ditambahkan
+      document.querySelectorAll('.gambar-konten').forEach(img => img.remove());
+
+      // 🔍 Cek apakah isi mengandung trigger kata
+      const dimunculkan = new Set();
+      Object.keys(triggerKata).forEach(kunci => {
+        if (isi.includes(kunci) && !dimunculkan.has(kunci)) {
+          const img = document.createElement("img");
+          img.src = triggerKata[kunci];
+          img.classList.add("gambar-konten");
+
+          // 🎲 Posisi acak
+          const posisi = ["left", "right", "top-left", "bottom-right"];
+          const posisiTerpilih = posisi[Math.floor(Math.random() * posisi.length)];
+          img.classList.add(`pos-${posisiTerpilih}`);
+
+          // 🎲 Rotasi miring acak
+          const derajat = Math.floor(Math.random() * 31) - 15;
+          img.style.transform = `rotate(${derajat}deg)`;
+
+          // 🌫️ Fade-in
+          img.style.opacity = "0";
+          setTimeout(() => {
+            img.style.opacity = "0.85";
+          }, 100);
+
+          // 🔍 Zoom saat diklik
+          img.onclick = () => {
+            img.classList.toggle("zoomed");
+          };
+
+          document.getElementById("suratContainer").appendChild(img);
+          dimunculkan.add(kunci);
+        }
+      });
     });
 }
 
