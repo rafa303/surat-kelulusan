@@ -10,6 +10,7 @@ const triggerKata = {
 
 function buka() {
   const input = document.getElementById("nameInput").value.trim().toLowerCase();
+
   fetch("data.json")
     .then(response => response.json())
     .then(data => {
@@ -38,43 +39,40 @@ function buka() {
       // Hapus gambar sebelumnya
       document.querySelectorAll('.gambar-konten').forEach(el => el.remove());
 
-      // Cek dan tampilkan gambar sesuai isi surat
+      // Tampilkan gambar dinamis sesuai kata kunci
       const dimunculkan = new Set();
       let gambarIndex = 0;
-const posisiTerpakai = [];
-    Object.keys(triggerKata).forEach(kunci => {
-      if (isi.includes(kunci) && !dimunculkan.has(kunci)) {
-        const img = document.createElement("img");
-        img.src = triggerKata[kunci];
-        img.classList.add("gambar-konten");
-    
-        const surat = document.querySelector('.surat');
-    
-        // Posisi acak: kiri atau kanan
-        const arah = Math.random() > 0.5 ? "left" : "right";
-        const jarakPinggir = -80;
-        const topPos = 100 + gambarIndex * 120; // Jarak antar gambar
-    
-        if (arah === "left") {
-          img.style.left = `${jarakPinggir}px`;
-        } else {
-          img.style.right = `${jarakPinggir}px`;
+
+      Object.keys(triggerKata).forEach(kunci => {
+        if (isi.includes(kunci) && !dimunculkan.has(kunci)) {
+          const img = document.createElement("img");
+          img.src = triggerKata[kunci];
+          img.classList.add("gambar-konten");
+
+          const surat = document.querySelector('.surat');
+          const arah = Math.random() > 0.5 ? "left" : "right";
+          const jarakPinggir = -80;
+          const topPos = 100 + gambarIndex * 120;
+
+          if (arah === "left") {
+            img.style.left = `${jarakPinggir}px`;
+          } else {
+            img.style.right = `${jarakPinggir}px`;
+          }
+          img.style.top = `${topPos}px`;
+
+          const derajat = Math.floor(Math.random() * 31) - 15;
+          img.style.transform = `rotate(${derajat}deg)`;
+
+          img.onclick = () => {
+            img.classList.toggle("zoomed");
+          };
+
+          surat.appendChild(img);
+          dimunculkan.add(kunci);
+          gambarIndex++;
         }
-        img.style.top = `${topPos}px`;
-    
-        // Rotasi acak
-        const derajat = Math.floor(Math.random() * 31) - 15;
-        img.style.transform = `rotate(${derajat}deg)`;
-    
-        // Zoom saat diklik
-        img.onclick = () => {
-          img.classList.toggle("zoomed");
-        };
-    
-        surat.appendChild(img);
-        dimunculkan.add(kunci);
-        gambarIndex++;
-      }
+      });
     });
 }
 
