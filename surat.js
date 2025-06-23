@@ -72,26 +72,33 @@ function kembali() {
 function cetakSebagaiGambar() {
   const surat = document.querySelector('.surat');
 
-  // Simpan style asli
-  const originalStyle = {
+  // Simpan style asli surat
+  const originalStyles = {
     background: surat.style.background,
     color: surat.style.color
   };
 
-  // Buat solid agar html2canvas bisa tangkap jelas
+  // Simpan style semua elemen teks di dalam surat
+  const allChildren = surat.querySelectorAll("*");
+  const originalTextColors = [];
+
+  allChildren.forEach(el => {
+    originalTextColors.push(el.style.color);
+    el.style.color = "#000"; // ubah semua teks jadi hitam
+    el.style.background = "transparent"; // hilangkan transparansi
+  });
+
+  // Gambar-gambar dekorasi disembunyikan
+  const dekoratif = surat.querySelectorAll('.gambar-konten');
+  dekoratif.forEach(img => {
+    img.style.display = "none";
+  });
+
+  // Ubah background jadi putih solid
   surat.style.background = "#ffffff";
   surat.style.color = "#000000";
 
-  // Sembunyikan gambar konten
-  const gambarSementara = document.querySelectorAll('.gambar-konten');
-  gambarSementara.forEach(el => el.style.display = "none");
-
-  // Paksa semua teks jadi hitam agar terlihat
-  surat.querySelectorAll("*").forEach(el => {
-    el.style.color = "#000";
-    el.style.background = "transparent";
-  });
-
+  // Render dan simpan
   html2canvas(surat, { scale: 2 }).then(canvas => {
     const link = document.createElement('a');
     link.download = 'surat-kelulusan.png';
@@ -99,12 +106,16 @@ function cetakSebagaiGambar() {
     link.click();
 
     // Kembalikan semua style
-    surat.style.background = originalStyle.background;
-    surat.style.color = originalStyle.color;
-    gambarSementara.forEach(el => el.style.display = "");
-    surat.querySelectorAll("*").forEach(el => {
-      el.style.color = "";
+    surat.style.background = originalStyles.background;
+    surat.style.color = originalStyles.color;
+
+    allChildren.forEach((el, i) => {
+      el.style.color = originalTextColors[i];
       el.style.background = "";
+    });
+
+    dekoratif.forEach(img => {
+      img.style.display = "";
     });
   });
 }
